@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="사건의 발단AWS 로 업로드 할 때 permission denied 로 업로드 불가 😱  권한 부여하면 만고 땡임    해결방법 cmdCentOS:   $ sudo chown -R centos:centos /var/www/html $ sudo chmod -R 755 /var/www/html  Ubuntu:   $ sudo chown -R ubuntu:ub">
+    <meta name="description" content="사건의 발단AWS 로 업로드 할 때 permission denied 로 업로드 불가 😱  권한 부여하면 만고 땡임    해결방법 cmdCentOS:   12$ sudo chown -R centos:centos /var/www/html$ sudo chmod -R 755 /var/www/html Ubuntu:   12$ sudo chown -R ubuntu:">
 <meta name="keywords" content="dev,aws,ec2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[헤딩일기]open for write: permission denied">
 <meta property="og:url" content="https://tax-k.github.io/2019/04/04/헤딩일기-open-for-write-permission-denied/index.html">
 <meta property="og:site_name" content="헤딩금지">
-<meta property="og:description" content="사건의 발단AWS 로 업로드 할 때 permission denied 로 업로드 불가 😱  권한 부여하면 만고 땡임    해결방법 cmdCentOS:   $ sudo chown -R centos:centos /var/www/html $ sudo chmod -R 755 /var/www/html  Ubuntu:   $ sudo chown -R ubuntu:ub">
+<meta property="og:description" content="사건의 발단AWS 로 업로드 할 때 permission denied 로 업로드 불가 😱  권한 부여하면 만고 땡임    해결방법 cmdCentOS:   12$ sudo chown -R centos:centos /var/www/html$ sudo chmod -R 755 /var/www/html Ubuntu:   12$ sudo chown -R ubuntu:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-04T04:54:22.730Z">
+<meta property="og:updated_time" content="2019-04-04T04:58:47.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[헤딩일기]open for write: permission denied">
-<meta name="twitter:description" content="사건의 발단AWS 로 업로드 할 때 permission denied 로 업로드 불가 😱  권한 부여하면 만고 땡임    해결방법 cmdCentOS:   $ sudo chown -R centos:centos /var/www/html $ sudo chmod -R 755 /var/www/html  Ubuntu:   $ sudo chown -R ubuntu:ub">
+<meta name="twitter:description" content="사건의 발단AWS 로 업로드 할 때 permission denied 로 업로드 불가 😱  권한 부여하면 만고 땡임    해결방법 cmdCentOS:   12$ sudo chown -R centos:centos /var/www/html$ sudo chmod -R 755 /var/www/html Ubuntu:   12$ sudo chown -R ubuntu:">
     
     
         
@@ -150,17 +150,11 @@
 <p>권한 부여하면 만고 땡임  </p>
 </blockquote>
 <h2 id="해결방법-cmd"><a href="#해결방법-cmd" class="headerlink" title="해결방법 cmd"></a>해결방법 cmd</h2><p>CentOS:  </p>
-<pre><code class="bash">$ sudo chown -R centos:centos /var/www/html
-$ sudo chmod -R 755 /var/www/html
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R centos:centos /var/www/html</span><br><span class="line">$ sudo chmod -R 755 /var/www/html</span><br></pre></td></tr></table></figure>
 <p>Ubuntu:  </p>
-<pre><code class="bash">$ sudo chown -R ubuntu:ubuntu /var/www/html
-$ sudo chmod -R 755 /var/www/html
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R ubuntu:ubuntu /var/www/html</span><br><span class="line">$ sudo chmod -R 755 /var/www/html</span><br></pre></td></tr></table></figure>
 <p>Amazon Linux:  </p>
-<pre><code class="bash">$ sudo chown -R ec2-user:ec2-user /var/www/html
-$ sudo chmod -R 755 /var/www/html
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R ec2-user:ec2-user /var/www/html</span><br><span class="line">$ sudo chmod -R 755 /var/www/html</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>끝</p>
 </blockquote>
