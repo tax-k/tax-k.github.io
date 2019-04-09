@@ -6,16 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="keywords" content="dev,aws,ec2">
+<meta property="og:type" content="article">
 <meta property="og:title" content="[헤딩일기]Load Test">
 <meta property="og:url" content="https://tax-k.github.io/2019/03/28/헤딩일기-Load-Test/index.html">
 <meta property="og:site_name" content="헤딩금지">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://tax-k.github.io/2019/03/28/헤딩일기-Load-Test/n-error.png">
-<meta property="og:updated_time" content="2019-04-04T13:08:46.129Z">
+<meta property="og:updated_time" content="2019-04-09T06:36:47.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[헤딩일기]Load Test">
-<meta name="twitter:image" content="https://tax-k.github.io/2019/03/28/헤딩일기-Load-Test/n-error.png">
     
     
         
@@ -103,7 +102,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Up"><span class="toc-number">1.</span> <span class="toc-text">Scale Up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Out"><span class="toc-number">2.</span> <span class="toc-text">Scale Out</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB"><span class="toc-number">3.</span> <span class="toc-text">ELB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoScaling"><span class="toc-number">4.</span> <span class="toc-text">AutoScaling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoScaling이-뭔가요"><span class="toc-number">4.1.</span> <span class="toc-text">AutoScaling이 뭔가요?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#준비물"><span class="toc-number">4.2.</span> <span class="toc-text">준비물</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-S3"><span class="toc-number">5.</span> <span class="toc-text">AWS S3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S3가-뭔가요"><span class="toc-number">5.1.</span> <span class="toc-text">S3가 뭔가요?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-RDS"><span class="toc-number">6.</span> <span class="toc-text">AWS RDS</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -136,13 +135,53 @@
       
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/aws/">aws</a>, <a class="tag-link" href="/tags/dev/">dev</a>, <a class="tag-link" href="/tags/ec2/">ec2</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p><a href="./n-error.png" title="hexo gallery test" class="gallery-item"><img src="./n-error.png" alt="hexo gallery test"></a><p></p>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="Scale-Up"><a href="#Scale-Up" class="headerlink" title="Scale Up"></a>Scale Up</h2><h2 id="Scale-Out"><a href="#Scale-Out" class="headerlink" title="Scale Out"></a>Scale Out</h2><p> DB를 포함하는 서비스라면 함부로 <b><code>Scale Out</code></b>을 하면 안돼요.</p>
+<h2 id="ELB"><a href="#ELB" class="headerlink" title="ELB"></a>ELB</h2><h2 id="AutoScaling"><a href="#AutoScaling" class="headerlink" title="AutoScaling"></a>AutoScaling</h2><h3 id="AutoScaling이-뭔가요"><a href="#AutoScaling이-뭔가요" class="headerlink" title="AutoScaling이 뭔가요?"></a>AutoScaling이 뭔가요?</h3><blockquote>
+<p>1.AWS의 꽃<br>2.지가 알아서 경우에 따라 컴퓨터를 자동으로 생성/삭제 하는 것 </p>
+</blockquote>
+<h3 id="준비물"><a href="#준비물" class="headerlink" title="준비물"></a>준비물</h3><ol>
+<li><p><b>AMIs</b></p>
+<ul>
+<li>ELB에서 이미지를 인스턴스화 해서 연결했듯이 여기도 이미지가 필요해요.  </li>
+</ul>
+</li>
+<li><p><b>Launch Configuration</b></p>
+<ul>
+<li><code>Launch</code> mean in AWS : AMIs를 인스턴스로 만드는 것  </li>
+<li><blockquote>
+<p>이미지를 인스턴스로 만드는 설정</p>
+</blockquote>
+</li>
+<li>이 설정을 기반으로 컴퓨터를 실제로 만들어 줍니다.  </li>
+</ul>
+</li>
+<li><p><b>Auto Scaling Groups</b></p>
+<ul>
+<li>CPU 점유율, 인스턴스 갯수(<code>min</code>, <code>max</code>), 알람 유/무 등 실행 조건을 설정해요.  </li>
+<li><blockquote>
+<p>센서티브한 설정</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="AWS-S3"><a href="#AWS-S3" class="headerlink" title="AWS S3"></a>AWS S3</h2><h3 id="S3가-뭔가요"><a href="#S3가-뭔가요" class="headerlink" title="S3가 뭔가요?"></a>S3가 뭔가요?</h3><blockquote>
+<p>파일서버를 서비스화 시킨 것</p>
+</blockquote>
+<h2 id="AWS-RDS"><a href="#AWS-RDS" class="headerlink" title="AWS RDS"></a>AWS RDS</h2><blockquote>
+<p>Comming Soon</p>
+</blockquote>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -175,7 +214,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Up"><span class="toc-number">1.</span> <span class="toc-text">Scale Up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Out"><span class="toc-number">2.</span> <span class="toc-text">Scale Out</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB"><span class="toc-number">3.</span> <span class="toc-text">ELB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoScaling"><span class="toc-number">4.</span> <span class="toc-text">AutoScaling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoScaling이-뭔가요"><span class="toc-number">4.1.</span> <span class="toc-text">AutoScaling이 뭔가요?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#준비물"><span class="toc-number">4.2.</span> <span class="toc-text">준비물</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-S3"><span class="toc-number">5.</span> <span class="toc-text">AWS S3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S3가-뭔가요"><span class="toc-number">5.1.</span> <span class="toc-text">S3가 뭔가요?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-RDS"><span class="toc-number">6.</span> <span class="toc-text">AWS RDS</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
