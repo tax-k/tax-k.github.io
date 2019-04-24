@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://tax-k.github.io/2019/03/28/헤딩일기-Load-Test/index.html">
 <meta property="og:site_name" content="헤딩금지">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-09T06:36:47.041Z">
+<meta property="og:updated_time" content="2019-04-23T10:02:43.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[헤딩일기]Load Test">
     
@@ -102,7 +102,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Up"><span class="toc-number">1.</span> <span class="toc-text">Scale Up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Out"><span class="toc-number">2.</span> <span class="toc-text">Scale Out</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB"><span class="toc-number">3.</span> <span class="toc-text">ELB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoScaling"><span class="toc-number">4.</span> <span class="toc-text">AutoScaling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoScaling이-뭔가요"><span class="toc-number">4.1.</span> <span class="toc-text">AutoScaling이 뭔가요?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#준비물"><span class="toc-number">4.2.</span> <span class="toc-text">준비물</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-S3"><span class="toc-number">5.</span> <span class="toc-text">AWS S3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S3가-뭔가요"><span class="toc-number">5.1.</span> <span class="toc-text">S3가 뭔가요?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-RDS"><span class="toc-number">6.</span> <span class="toc-text">AWS RDS</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Up"><span class="toc-number">1.</span> <span class="toc-text">Scale Up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Out"><span class="toc-number">2.</span> <span class="toc-text">Scale Out</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB"><span class="toc-number">3.</span> <span class="toc-text">ELB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoScaling"><span class="toc-number">4.</span> <span class="toc-text">AutoScaling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoScaling이-뭔가요"><span class="toc-number">4.1.</span> <span class="toc-text">AutoScaling이 뭔가요?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#준비물"><span class="toc-number">4.2.</span> <span class="toc-text">준비물</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-S3"><span class="toc-number">5.</span> <span class="toc-text">AWS S3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S3가-뭔가요"><span class="toc-number">5.1.</span> <span class="toc-text">S3가 뭔가요?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-RDS"><span class="toc-number">6.</span> <span class="toc-text">AWS RDS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TEST-TOOL"><span class="toc-number">7.</span> <span class="toc-text">TEST TOOL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Benchmark"><span class="toc-number">7.1.</span> <span class="toc-text">Apache Benchmark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-JMeter"><span class="toc-number">7.2.</span> <span class="toc-text">Apache JMeter</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-JMeter-란"><span class="toc-number">7.2.1.</span> <span class="toc-text">1. JMeter 란?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-성능-테스트-란"><span class="toc-number">7.2.2.</span> <span class="toc-text">2. 성능 테스트 란?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-주요-용어-정리"><span class="toc-number">7.2.3.</span> <span class="toc-text">3. 주요 용어 정리</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -177,11 +177,55 @@
 </li>
 </ol>
 <h2 id="AWS-S3"><a href="#AWS-S3" class="headerlink" title="AWS S3"></a>AWS S3</h2><h3 id="S3가-뭔가요"><a href="#S3가-뭔가요" class="headerlink" title="S3가 뭔가요?"></a>S3가 뭔가요?</h3><blockquote>
-<p>파일서버를 서비스화 시킨 것</p>
+<p>파일서버를 서비스화 시킨 것  </p>
 </blockquote>
 <h2 id="AWS-RDS"><a href="#AWS-RDS" class="headerlink" title="AWS RDS"></a>AWS RDS</h2><blockquote>
 <p>Comming Soon</p>
 </blockquote>
+<h2 id="TEST-TOOL"><a href="#TEST-TOOL" class="headerlink" title="TEST TOOL"></a>TEST TOOL</h2><h3 id="Apache-Benchmark"><a href="#Apache-Benchmark" class="headerlink" title="Apache Benchmark"></a>Apache Benchmark</h3><blockquote>
+<p>Comming Soon  </p>
+</blockquote>
+<h3 id="Apache-JMeter"><a href="#Apache-JMeter" class="headerlink" title="Apache JMeter"></a>Apache JMeter</h3><h4 id="1-JMeter-란"><a href="#1-JMeter-란" class="headerlink" title="1. JMeter 란?"></a>1. JMeter 란?</h4><blockquote>
+<p>Apache JMeter는 Client-Server 구조로 된 소프트웨어의 성능 테스트를 위해서 만들어진 100% 순수 자바 프로그램입니다.<br>JMeter는 단위/성능/스트레스 테스트 등 많은 곳에서 활용할 수 있어요.  </p>
+</blockquote>
+<h4 id="2-성능-테스트-란"><a href="#2-성능-테스트-란" class="headerlink" title="2. 성능 테스트 란?"></a>2. <b>성능 테스트</b> 란?</h4><blockquote>
+<p>실제 사용 환경과 비슷한 환경에서 테스트를 진행해서 시스템의 성능을 확인하는걸 말해요.<br>그 종류는 아래와 같습니다.</p>
+</blockquote>
+<ul>
+<li><p><b>Load Test</b>  </p>
+<blockquote>
+<p>시스템의 성능을 벤치 마크하기 위한 테스트예요 </p>
+</blockquote>
+<p>  <b><code>Load(부하)</code></b>를 순차적으로 증가시키면서 응답시간이 급격히 증가하거나 처리량이 더이상 증가하지 않거나 시스템의 <code>CPU</code>와 <code>Memory</code> 등이 기준값 이상으로 증가하는 등 비정상 상태가 발생하는 임계점을 찾아내고 이를 바탕으로 성능 이슈에 대한 튜닝과 테스트를 반복합니다.  </p>
+<p>  <br></p>
+</li>
+<li><p><b>Stress Test</b>  </p>
+<blockquote>
+<p>시스템의 최고 성능 한계를 측정하기 위한 테스트예요</p>
+</blockquote>
+<p>  <b><code>Threshold(임계값)</code></b> 이상의 요청이나 비정상적인 요청을 보내 비정상적인 상황의 처리 상태를 확인합니다.<br>  <br></p>
+</li>
+<li><p><b>Spike Test</b></p>
+<blockquote>
+<ol>
+<li>갑자기 사용자가 몰렸을 때 요청이 정상적으로 처리되는지  </li>
+<li>Workload(업무부하)가 줄어들 때 정상적으로 반응하는지  </li>
+</ol>
+</blockquote>
+<p>  확인하기 위한 테스트예요  </p>
+<p>  <br></p>
+</li>
+<li><b>Stability Test / Soak Test</b><blockquote>
+<p>긴 시간 동안 테스트를 진행해서 메모리 사용량, 성능 변화 등을 확인하는 테스트예요  </p>
+</blockquote>
+</li>
+</ul>
+<p><br>  </p>
+<h4 id="3-주요-용어-정리"><a href="#3-주요-용어-정리" class="headerlink" title="3. 주요 용어 정리"></a>3. <strong>주요 용어 정리</strong></h4><ul>
+<li><strong>Active User</strong>:  실제 서버에 <strong><code>연결된 상태</code></strong> 로 요청을 처리 중인 사용자를 말해요.</li>
+<li><strong>InActive User</strong>: 서버와의 Session을 가지고 있지만 <strong><code>직접 접속하여 요청을 주고받는 상태가 아닌</code></strong> 사용자(화면의 내용을 읽거나 정보를 입력하고 있는)를 의미해요.</li>
+<li><strong>Concurrent User(Active User + InActive User)</strong>: 간단하게 <strong><code>동시접속자 수</code></strong>, 성능테스트에서 <strong><code>가상 사용자 수</code></strong></li>
+</ul>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -214,7 +258,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Up"><span class="toc-number">1.</span> <span class="toc-text">Scale Up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Out"><span class="toc-number">2.</span> <span class="toc-text">Scale Out</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB"><span class="toc-number">3.</span> <span class="toc-text">ELB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoScaling"><span class="toc-number">4.</span> <span class="toc-text">AutoScaling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoScaling이-뭔가요"><span class="toc-number">4.1.</span> <span class="toc-text">AutoScaling이 뭔가요?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#준비물"><span class="toc-number">4.2.</span> <span class="toc-text">준비물</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-S3"><span class="toc-number">5.</span> <span class="toc-text">AWS S3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S3가-뭔가요"><span class="toc-number">5.1.</span> <span class="toc-text">S3가 뭔가요?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-RDS"><span class="toc-number">6.</span> <span class="toc-text">AWS RDS</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Up"><span class="toc-number">1.</span> <span class="toc-text">Scale Up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scale-Out"><span class="toc-number">2.</span> <span class="toc-text">Scale Out</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELB"><span class="toc-number">3.</span> <span class="toc-text">ELB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AutoScaling"><span class="toc-number">4.</span> <span class="toc-text">AutoScaling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AutoScaling이-뭔가요"><span class="toc-number">4.1.</span> <span class="toc-text">AutoScaling이 뭔가요?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#준비물"><span class="toc-number">4.2.</span> <span class="toc-text">준비물</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-S3"><span class="toc-number">5.</span> <span class="toc-text">AWS S3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#S3가-뭔가요"><span class="toc-number">5.1.</span> <span class="toc-text">S3가 뭔가요?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AWS-RDS"><span class="toc-number">6.</span> <span class="toc-text">AWS RDS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TEST-TOOL"><span class="toc-number">7.</span> <span class="toc-text">TEST TOOL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Benchmark"><span class="toc-number">7.1.</span> <span class="toc-text">Apache Benchmark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-JMeter"><span class="toc-number">7.2.</span> <span class="toc-text">Apache JMeter</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-JMeter-란"><span class="toc-number">7.2.1.</span> <span class="toc-text">1. JMeter 란?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-성능-테스트-란"><span class="toc-number">7.2.2.</span> <span class="toc-text">2. 성능 테스트 란?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-주요-용어-정리"><span class="toc-number">7.2.3.</span> <span class="toc-text">3. 주요 용어 정리</span></a></li></ol></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
