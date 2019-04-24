@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>[헤딩일기] LAMP Setting</title>
+      <link href="/2019/04/11/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-LAMP-Setting/"/>
+      <url>/2019/04/11/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-LAMP-Setting/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" < div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script></div>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[헤딩금지] Docker Command</title>
+      <link href="/2019/04/09/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Docker-Command/"/>
+      <url>/2019/04/09/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Docker-Command/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="언젠가-한번은-헷갈릴"><a href="#언젠가-한번은-헷갈릴" class="headerlink" title="언젠가 한번은 헷갈릴"></a>언젠가 한번은 헷갈릴</h2><h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><p><code>docker pull &lt;이미지 이름&gt;:&lt;태그&gt;</code> : Docker 이미지를 레포지토리로부터 받아옵니다.  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull amazonlinux:latest</span><br></pre></td></tr></table></figure><h3 id="images"><a href="#images" class="headerlink" title="images"></a>images</h3><p><code>docker images</code> : Docker 이미지 리스트 출력해요.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">amazonlinux         1                   2ea12407ae7d        7 weeks ago         168MB</span><br></pre></td></tr></table></figure><h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h3><p><code>docker ps</code> : Docker 컨테이너 리스트 출력해요. <code>docker ps -a</code> 는 <code>stop</code> 된 컨테이너도 보여줍니다.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS               NAMES</span><br><span class="line">9dd0c78587bf        amazonlinux:1       <span class="string">"tail -f /dev/null"</span>   11 minutes ago      Up 11 minutes                           lambdapack</span><br></pre></td></tr></table></figure><h3 id="run"><a href="#run" class="headerlink" title="run"></a>run</h3><p><code>docker run &lt;옵션&gt; &lt;이미지 이름&gt; &lt;실행할 파일&gt;</code> : Docker 이미지를 컨테이너로 만들어 실행합니다.</p><p>세부 옵션들도 있는데 자세한건 나중에 추가하는걸로</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -i -t --name lambdapack amazonlinux /bin/bash</span><br></pre></td></tr></table></figure><p>amazonlinux 이미지 안의 /bin/bash를 실행합니다. 이미지 이름 대신 이미지 ID를 사용해도 됩니다. </p><p><code>-i</code> (interactive), <code>-t</code> (Pseudo-tty) , <code>-it</code>(동시에 써도 됨) 옵션을 사용하면 실행된 Bash 에 입/출력을 할 수 있습니다. </p><p>그리고 –name 옵션으로 컨테이너의 <code>name</code>(alias)을 지정할 수 있습니다. 이름을 지정하지 않으면 Docker가 랜덤으로 막 지어요.</p><blockquote><p>고급버전</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -v $(<span class="built_in">pwd</span>):/outputs --name lambdapack -d amazonlinux:1 tail -f /dev/null</span><br></pre></td></tr></table></figure><h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><p><code>docker stop &lt;컨테이너 이름&gt; or &lt;컨테이너 ID&gt;</code> : 컨테이너 스탑이요.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop lambdapack</span><br></pre></td></tr></table></figure><h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><p><code>docker start &lt;컨테이너 이름&gt; or &lt;컨테이너 ID&gt;</code> : 컨테이너 스탙요.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start lambdapack</span><br></pre></td></tr></table></figure><h3 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h3><p><code>docker restart &lt;컨테이너 이름&gt; or &lt;컨테이너 ID&gt;</code> : 컨테이너 재시작요.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker restart lambdapack</span><br></pre></td></tr></table></figure><h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p><code>docker rm &lt;컨테이너 이름 or 컨테이너 ID&gt;</code> : 컨테이너 삭제요.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm lambdapack</span><br><span class="line">$ docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS               NAMES</span><br></pre></td></tr></table></figure><h3 id="rmi"><a href="#rmi" class="headerlink" title="rmi"></a>rmi</h3><p><code>docker rmi &lt;이미지 이름&gt;:&lt;태그&gt; or &lt;이미지 ID&gt;:&lt;태그&gt;</code> : 이미지 삭제요.</p><blockquote><p><code>docker rmi amazonlinux</code> 처럼 이미지 이름만 지정하면 태그가 달라도 amazonlinux 이름의 모든 이미지가 삭제되니까 조심조심</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker rmi amazonlinux:latest</span><br><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED                  VIRTUAL SIZE</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> cmd </tag>
+            
+            <tag> tip </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[뇌가번쩍] eXplainable AI - XAI</title>
+      <link href="/2019/04/09/%EB%87%8C%EA%B0%80%EB%B2%88%EC%A9%8D-eXplainable-AI-XAI/"/>
+      <url>/2019/04/09/%EB%87%8C%EA%B0%80%EB%B2%88%EC%A9%8D-eXplainable-AI-XAI/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id="eXplanable-AI-XAI"><a href="#eXplanable-AI-XAI" class="headerlink" title="eXplanable AI - XAI"></a>eXplanable AI - XAI<h2 id="언젠가-한번은-헷갈릴"><a href="#언젠가-한번은-헷갈릴" class="headerlink" title="언젠가 한번은 헷갈릴"></a>언젠가 한번은 헷갈릴</h2><h2 id="Library"><a href="#Library" class="headerlink" title="Library"></a>Library</h2><ol><li>LIME</li><li>SHAP</li></ol></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+            <tag> ML </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[헤딩금지]Default ssh Usernames For Connecting To EC2</title>
+      <link href="/2019/04/08/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Default-ssh-Usernames-For-Connecting-To-EC2/"/>
+      <url>/2019/04/08/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Default-ssh-Usernames-For-Connecting-To-EC2/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id="Default-ssh-Usernames-For-Connecting-To-EC2"><a href="#Default-ssh-Usernames-For-Connecting-To-EC2" class="headerlink" title="Default ssh Usernames For Connecting To EC2"></a>Default ssh Usernames For Connecting To EC2<h2 id="언젠가-한번은-헷갈릴"><a href="#언젠가-한번은-헷갈릴" class="headerlink" title="언젠가 한번은 헷갈릴"></a>언젠가 한번은 헷갈릴</h2><h3 id="default-ssh-username"><a href="#default-ssh-username" class="headerlink" title="default ssh username"></a>default ssh username</h3><table><thead><tr><th>OS</th><th>Official AMI ssh Username</th><th>Other AMI ssh Usernames</th></tr></thead><tbody><tr><td>Amazon Linux</td><td><code>ec2-user</code></td><td></td></tr><tr><td>Ubuntu</td><td><code>ubuntu</code></td><td><code>root</code></td></tr><tr><td>Debian</td><td><code>admin</code></td><td><code>root</code></td></tr><tr><td>RHEL 6.4 and later</td><td><code>ec2-user</code></td><td></td></tr><tr><td>RHEL 6.3 and earlier</td><td><code>root</code></td></tr><tr><td>Fedora</td><td><code>fedora</code></td><td><code>ec2-user</code>, <code>root</code></td></tr><tr><td>Centos</td><td><code>centos</code></td><td><code>root</code></td></tr><tr><td>SUSE</td><td><code>ec2-user</code></td><td><code>root</code></td></tr><tr><td>BitNami</td><td><code>bitnami</code></td><td></td></tr><tr><td>TurnKey</td><td><code>root</code></td><td></td></tr><tr><td>NanoStack</td><td><code>ubuntu</code></td><td></td></tr><tr><td>FreeBSD</td><td><code>ec2-user</code></td><td></td></tr><tr><td>OmniOS</td><td><code>root</code></td><td></td></tr></tbody></table></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> aws </tag>
+            
+            <tag> ec2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[헤딩금지]@media query</title>
+      <link href="/2019/04/04/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-media-query/"/>
+      <url>/2019/04/04/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-media-query/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <a href="/2019/04/04/헤딩금지-media-query/n-error.png"><img src="/2019/04/04/헤딩금지-media-query/n-error.png" title="spaced title testing"></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[헤딩일기]open for write: permission denied</title>
+      <link href="/2019/04/04/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-open-for-write-permission-denied/"/>
+      <url>/2019/04/04/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-open-for-write-permission-denied/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id="open-for-write-permission-denied"><a href="#open-for-write-permission-denied" class="headerlink" title="open for write: permission denied"></a>open for write: permission denied<h2 id="사건의-발단"><a href="#사건의-발단" class="headerlink" title="사건의 발단"></a>사건의 발단</h2><p>AWS 로 업로드 할 때 <code>permission denied</code> 로 업로드 불가 😱</p><blockquote><p>권한 부여하면 만고 땡임  </p></blockquote><h2 id="해결방법-cmd"><a href="#해결방법-cmd" class="headerlink" title="해결방법 cmd"></a>해결방법 cmd</h2><p>CentOS:  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R centos:centos /var/www/html</span><br><span class="line">$ sudo chmod -R 755 /var/www/html</span><br></pre></td></tr></table></figure><p>Ubuntu:  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R ubuntu:ubuntu /var/www/html</span><br><span class="line">$ sudo chmod -R 755 /var/www/html</span><br></pre></td></tr></table></figure><p>Amazon Linux:  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R ec2-user:ec2-user /var/www/html</span><br><span class="line">$ sudo chmod -R 755 /var/www/html</span><br></pre></td></tr></table></figure><blockquote><p>끝</p></blockquote></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> aws </tag>
+            
+            <tag> ec2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[헤딩금지]display: flex</title>
+      <link href="/2019/03/28/CSS-display-flex/"/>
+      <url>/2019/03/28/CSS-display-flex/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" < div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Layout </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
+            
+            <tag> dev </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[헤딩금지]Multi Language</title>
+      <link href="/2019/03/28/CSS-Multi-Language/"/>
+      <url>/2019/03/28/CSS-Multi-Language/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" < div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> UX </category>
+          
+          <category> Accessibility </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
+            
+            <tag> dev </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[헤딩일기]Load Test</title>
+      <link href="/2019/03/28/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-Load-Test/"/>
+      <url>/2019/03/28/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-Load-Test/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="Scale-Up"><a href="#Scale-Up" class="headerlink" title="Scale Up"></a>Scale Up</h2><h2 id="Scale-Out"><a href="#Scale-Out" class="headerlink" title="Scale Out"></a>Scale Out</h2><p> DB를 포함하는 서비스라면 함부로 <b><code>Scale Out</code></b>을 하면 안돼요.</p><h2 id="ELB"><a href="#ELB" class="headerlink" title="ELB"></a>ELB</h2><h2 id="AutoScaling"><a href="#AutoScaling" class="headerlink" title="AutoScaling"></a>AutoScaling</h2><h3 id="AutoScaling이-뭔가요"><a href="#AutoScaling이-뭔가요" class="headerlink" title="AutoScaling이 뭔가요?"></a>AutoScaling이 뭔가요?</h3><blockquote><p>1.AWS의 꽃<br>2.지가 알아서 경우에 따라 컴퓨터를 자동으로 생성/삭제 하는 것 </p></blockquote><h3 id="준비물"><a href="#준비물" class="headerlink" title="준비물"></a>준비물</h3><ol><li><p><b>AMIs</b></p><ul><li>ELB에서 이미지를 인스턴스화 해서 연결했듯이 여기도 이미지가 필요해요.  </li></ul></li><li><p><b>Launch Configuration</b></p><ul><li><code>Launch</code> mean in AWS : AMIs를 인스턴스로 만드는 것  </li><li><blockquote><p>이미지를 인스턴스로 만드는 설정</p></blockquote></li><li>이 설정을 기반으로 컴퓨터를 실제로 만들어 줍니다.  </li></ul></li><li><p><b>Auto Scaling Groups</b></p><ul><li>CPU 점유율, 인스턴스 갯수(<code>min</code>, <code>max</code>), 알람 유/무 등 실행 조건을 설정해요.  </li><li><blockquote><p>센서티브한 설정</p></blockquote></li></ul></li></ol><h2 id="AWS-S3"><a href="#AWS-S3" class="headerlink" title="AWS S3"></a>AWS S3</h2><h3 id="S3가-뭔가요"><a href="#S3가-뭔가요" class="headerlink" title="S3가 뭔가요?"></a>S3가 뭔가요?</h3><blockquote><p>파일서버를 서비스화 시킨 것  </p></blockquote><h2 id="AWS-RDS"><a href="#AWS-RDS" class="headerlink" title="AWS RDS"></a>AWS RDS</h2><blockquote><p>Comming Soon</p></blockquote><h2 id="TEST-TOOL"><a href="#TEST-TOOL" class="headerlink" title="TEST TOOL"></a>TEST TOOL</h2><h3 id="Apache-Benchmark"><a href="#Apache-Benchmark" class="headerlink" title="Apache Benchmark"></a>Apache Benchmark</h3><blockquote><p>Comming Soon  </p></blockquote><h3 id="Apache-JMeter"><a href="#Apache-JMeter" class="headerlink" title="Apache JMeter"></a>Apache JMeter</h3><h4 id="1-JMeter-란"><a href="#1-JMeter-란" class="headerlink" title="1. JMeter 란?"></a>1. JMeter 란?</h4><blockquote><p>Apache JMeter는 Client-Server 구조로 된 소프트웨어의 성능 테스트를 위해서 만들어진 100% 순수 자바 프로그램입니다.<br>JMeter는 단위/성능/스트레스 테스트 등 많은 곳에서 활용할 수 있어요.  </p></blockquote><h4 id="2-성능-테스트-란"><a href="#2-성능-테스트-란" class="headerlink" title="2. 성능 테스트 란?"></a>2. <b>성능 테스트</b> 란?</h4><blockquote><p>실제 사용 환경과 비슷한 환경에서 테스트를 진행해서 시스템의 성능을 확인하는걸 말해요.<br>그 종류는 아래와 같습니다.</p></blockquote><ul><li><p><b>Load Test</b>  </p><blockquote><p>시스템의 성능을 벤치 마크하기 위한 테스트예요 </p></blockquote><p>  <b><code>Load(부하)</code></b>를 순차적으로 증가시키면서 응답시간이 급격히 증가하거나 처리량이 더이상 증가하지 않거나 시스템의 <code>CPU</code>와 <code>Memory</code> 등이 기준값 이상으로 증가하는 등 비정상 상태가 발생하는 임계점을 찾아내고 이를 바탕으로 성능 이슈에 대한 튜닝과 테스트를 반복합니다.  </p><p>  <br></p></li><li><p><b>Stress Test</b>  </p><blockquote><p>시스템의 최고 성능 한계를 측정하기 위한 테스트예요</p></blockquote><p>  <b><code>Threshold(임계값)</code></b> 이상의 요청이나 비정상적인 요청을 보내 비정상적인 상황의 처리 상태를 확인합니다.<br>  <br></p></li><li><p><b>Spike Test</b></p><blockquote><ol><li>갑자기 사용자가 몰렸을 때 요청이 정상적으로 처리되는지  </li><li>Workload(업무부하)가 줄어들 때 정상적으로 반응하는지  </li></ol></blockquote><p>  확인하기 위한 테스트예요  </p><p>  <br></p></li><li><b>Stability Test / Soak Test</b><blockquote><p>긴 시간 동안 테스트를 진행해서 메모리 사용량, 성능 변화 등을 확인하는 테스트예요  </p></blockquote></li></ul><p><br>  </p><h4 id="3-주요-용어-정리"><a href="#3-주요-용어-정리" class="headerlink" title="3. 주요 용어 정리"></a>3. <strong>주요 용어 정리</strong></h4><ul><li><strong>Active User</strong>:  실제 서버에 <strong><code>연결된 상태</code></strong> 로 요청을 처리 중인 사용자를 말해요.</li><li><strong>InActive User</strong>: 서버와의 Session을 가지고 있지만 <strong><code>직접 접속하여 요청을 주고받는 상태가 아닌</code></strong> 사용자(화면의 내용을 읽거나 정보를 입력하고 있는)를 의미해요.</li><li><strong>Concurrent User(Active User + InActive User)</strong>: 간단하게 <strong><code>동시접속자 수</code></strong>, 성능테스트에서 <strong><code>가상 사용자 수</code></strong></li></ul></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> aws </tag>
+            
+            <tag> ec2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/03/28/hello-world/"/>
+      <url>/2019/03/28/hello-world/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<p></p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p><code>or</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p><code>or</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="Remove-post"><a href="#Remove-post" class="headerlink" title="Remove post"></a>Remove post</h3><ol><li>Remove <code>.md</code> file from directory</li><li><p><code>hexo clean</code> cmd</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 $ hexo clean</span><br><span class="line">2 INFO  Deleted database.</span><br><span class="line">3 INFO  Deleted public folder.</span><br></pre></td></tr></table></figure></li><li><p><code>hexo generate</code> cmd</p></li><li><code>hexo deploy</code> cmd  </li></ol><h3 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h3><blockquote><p><code>hexo g -d</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure></p></blockquote></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

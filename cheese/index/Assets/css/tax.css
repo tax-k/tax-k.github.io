@@ -2,14 +2,3 @@
 #header #nav {
     color: #00319c;
 }
-
-#header #nav ul li {
-    border-right: 1px dotted #00319c;
-}
-#header #nav ul a:hover {
-    background-image: linear-gradient(transparent, transparent 5px, #00319c 5px, #00319c);
-}
-
-body h1, body .h1 {
-    color: #00319c;
-}
