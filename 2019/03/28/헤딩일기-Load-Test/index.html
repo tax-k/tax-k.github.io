@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://tax-k.github.io/2019/03/28/헤딩일기-Load-Test/index.html">
 <meta property="og:site_name" content="헤딩금지">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-23T10:02:43.010Z">
+<meta property="og:updated_time" content="2019-04-30T09:31:53.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[헤딩일기]Load Test">
     
@@ -227,6 +227,14 @@
 <li><strong>Active User</strong>:  실제 서버에 <strong><code>연결된 상태</code></strong> 로 요청을 처리 중인 사용자를 말해요.</li>
 <li><strong>InActive User</strong>: 서버와의 Session을 가지고 있지만 <strong><code>직접 접속하여 요청을 주고받는 상태가 아닌</code></strong> 사용자(화면의 내용을 읽거나 정보를 입력하고 있는)를 의미해요.</li>
 <li><strong>Concurrent User(Active User + InActive User)</strong>: 간단하게 <strong><code>동시접속자 수</code></strong>, 성능테스트에서 <strong><code>가상 사용자 수</code></strong></li>
+<li><strong>Virtual User</strong>: 가상 사용자 수, JMeter에서는 Thread 수에요.</li>
+<li><strong>Ramp-Up Period</strong>: Thread(Virtual User)생성에 걸리는 시간이에요. thread= 10, ramp-up= 50이면 10개의 thread를 50초에 걸쳐 차례대로 생성해요. 다시말해 5초에 thread 1개씩 만들어내요.</li>
+<li><strong>Throughput</strong>: 단위 시간당 대상 서버에서 처리되는 요청수를 말해요. 보통 TPS(Transaction Per Seconds)로 표현해요.<blockquote>
+<p>여기서부터 개인적으로 중요하다 생각합니다. 제대로 이해하고 슥 넘어가도록 해요.  </p>
+</blockquote>
+</li>
+<li><strong>Response Time/Load Time</strong>: 응답시간 아니면 처리시간이라고 표현해요. <strong><code>요청을 보내고 응답이 완료되어 사용자 화면에 출력될 때까지의 시간</code></strong> 이에요. <code>주요 평가지표</code>에요.</li>
+<li>**Latency</li>
 </ul>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
