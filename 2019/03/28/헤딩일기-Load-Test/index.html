@@ -12,9 +12,11 @@
 <meta property="og:url" content="https://tax-k.github.io/2019/03/28/헤딩일기-Load-Test/index.html">
 <meta property="og:site_name" content="헤딩금지">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-30T09:31:53.820Z">
+<meta property="og:image" content="https://tax-k.github.io/2019/03/28/헤딩일기-Load-Test/figure1.png">
+<meta property="og:updated_time" content="2019-05-02T07:48:05.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[헤딩일기]Load Test">
+<meta name="twitter:image" content="https://tax-k.github.io/2019/03/28/헤딩일기-Load-Test/figure1.png">
     
     
         
@@ -234,8 +236,16 @@
 </blockquote>
 </li>
 <li><strong>Response Time/Load Time</strong>: 응답시간 아니면 처리시간이라고 표현해요. <strong><code>요청을 보내고 응답이 완료되어 사용자 화면에 출력될 때까지의 시간</code></strong> 이에요. <code>주요 평가지표</code>에요.</li>
-<li>**Latency</li>
+<li><strong>Latency</strong>: 요청을 보낸 후 데이터를 받기 시작할 때까지의 시간을 말해요. </li>
+<li><strong>Think Time</strong>: 하나의 요청에 응답을 수신하고 다음 요청을 보낼 때까지의 시간을 의미한다. 테스트에서 실제 사용자의 사용 패턴과 유사한 패턴을 구현하기 위해서는 이 Think Time을 적절히 적용해서 여러가지 패턴들을 테스트할 수 있어요.</li>
+<li><strong>Request Interval Time</strong>: 요청을 보낸 후 다음 요청을 보낼 때까지 시간을 말해요.</li>
+<li><strong>Load Time vs Latency</strong>: 둘이 뭔가 헷갈립니다. 아래 사진 보시죠 🤔   </li>
 </ul>
+<p><a href="./figure1.png" title="Load Time vs Latency" class="gallery-item"><img src="./figure1.png" alt="Load Time vs Latency" title="Load Time vs Latency"></a><br>사진을 보시면 항상 Load Time ≥ Latency가 성립되는걸 알수 있습니다.<br>아래는 확실히 이해할 수 있는 예시 입니다.<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A와 B 사이트에 동일한 크기(10MB 정도)의 파일을 올려놓고 다운로드 테스트를 진행한다고 가정합니다.  </span><br><span class="line">A 사이트와 B 사이트의 결과를 비교해 보니 B 사이트의 Load Time이 2배 이상 컸습니다.  </span><br><span class="line">하지만 Latency는 거의 비슷했다면 차이가 나는 이유는 무엇일까요?</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>바로 <code>Load time - Latency</code>는 <code>데이터를 전송받는 데 걸리는 시간</code>이 됩니다.  </p>
+</blockquote>
+<p>즉, B 사이트가 A 사이트보다 데이터를 내려받는 속도가 느리다고 볼 수 있으며 B 사이트는 처리량을 늘리기 위해 웹 서버를 튜닝하기보다는  <b><code>네트워크의 대역폭(Bandwidth)</code></b>을 늘리는 것을 고려해야 하는게 좋습니다.</p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
