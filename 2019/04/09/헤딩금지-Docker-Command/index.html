@@ -149,34 +149,34 @@
 
   <div class="content" itemprop="articleBody">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="언젠가-한번은-헷갈릴"><a href="#언젠가-한번은-헷갈릴" class="headerlink" title="언젠가 한번은 헷갈릴"></a>언젠가 한번은 헷갈릴</h2><h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><p><code>docker pull &lt;이미지 이름&gt;:&lt;태그&gt;</code> : Docker 이미지를 레포지토리로부터 받아옵니다.  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull amazonlinux:latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker pull amazonlinux:latest</span><br></pre></td></tr></table></figure>
 <h3 id="images"><a href="#images" class="headerlink" title="images"></a>images</h3><p><code>docker images</code> : Docker 이미지 리스트 출력해요.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">amazonlinux         1                   2ea12407ae7d        7 weeks ago         168MB</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">amazonlinux         1                   2ea12407ae7d        7 weeks ago         168MB</span><br></pre></td></tr></table></figure>
 <h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h3><p><code>docker ps</code> : Docker 컨테이너 리스트 출력해요. <code>docker ps -a</code> 는 <code>stop</code> 된 컨테이너도 보여줍니다.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS               NAMES</span><br><span class="line">9dd0c78587bf        amazonlinux:1       <span class="string">"tail -f /dev/null"</span>   11 minutes ago      Up 11 minutes                           lambdapack</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS               NAMES</span><br><span class="line">9dd0c78587bf        amazonlinux:1       <span class="string">"tail -f /dev/null"</span>   11 minutes ago      Up 11 minutes                           lambdapack</span><br></pre></td></tr></table></figure>
 <h3 id="run"><a href="#run" class="headerlink" title="run"></a>run</h3><p><code>docker run &lt;옵션&gt; &lt;이미지 이름&gt; &lt;실행할 파일&gt;</code> : Docker 이미지를 컨테이너로 만들어 실행합니다.</p>
 <p>세부 옵션들도 있는데 자세한건 나중에 추가하는걸로</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -i -t --name lambdapack amazonlinux /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -i -t --name lambdapack amazonlinux /bin/bash</span><br></pre></td></tr></table></figure>
 <p>amazonlinux 이미지 안의 /bin/bash를 실행합니다. 이미지 이름 대신 이미지 ID를 사용해도 됩니다. </p>
 <p><code>-i</code> (interactive), <code>-t</code> (Pseudo-tty) , <code>-it</code>(동시에 써도 됨) 옵션을 사용하면 실행된 Bash 에 입/출력을 할 수 있습니다. </p>
 <p>그리고 –name 옵션으로 컨테이너의 <code>name</code>(alias)을 지정할 수 있습니다. 이름을 지정하지 않으면 Docker가 랜덤으로 막 지어요.</p>
 <blockquote>
 <p>고급버전</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -v $(<span class="built_in">pwd</span>):/outputs --name lambdapack -d amazonlinux:1 tail -f /dev/null</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker run -v $(<span class="built_in">pwd</span>):/outputs --name lambdapack -d amazonlinux:1 tail -f /dev/null</span><br></pre></td></tr></table></figure>
 <h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><p><code>docker stop &lt;컨테이너 이름&gt; or &lt;컨테이너 ID&gt;</code> : 컨테이너 스탑이요.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop lambdapack</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker stop lambdapack</span><br></pre></td></tr></table></figure>
 <h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><p><code>docker start &lt;컨테이너 이름&gt; or &lt;컨테이너 ID&gt;</code> : 컨테이너 스탙요.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start lambdapack</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker start lambdapack</span><br></pre></td></tr></table></figure>
 <h3 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h3><p><code>docker restart &lt;컨테이너 이름&gt; or &lt;컨테이너 ID&gt;</code> : 컨테이너 재시작요.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker restart lambdapack</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker restart lambdapack</span><br></pre></td></tr></table></figure>
 <h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p><code>docker rm &lt;컨테이너 이름 or 컨테이너 ID&gt;</code> : 컨테이너 삭제요.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm lambdapack</span><br><span class="line">$ docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS               NAMES</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rm lambdapack</span><br><span class="line">$ docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS               NAMES</span><br></pre></td></tr></table></figure>
 <h3 id="rmi"><a href="#rmi" class="headerlink" title="rmi"></a>rmi</h3><p><code>docker rmi &lt;이미지 이름&gt;:&lt;태그&gt; or &lt;이미지 ID&gt;:&lt;태그&gt;</code> : 이미지 삭제요.</p>
 <blockquote>
 <p><code>docker rmi amazonlinux</code> 처럼 이미지 이름만 지정하면 태그가 달라도 amazonlinux 이름의 모든 이미지가 삭제되니까 조심조심</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker rmi amazonlinux:latest</span><br><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED                  VIRTUAL SIZE</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rmi amazonlinux:latest</span><br><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED                  VIRTUAL SIZE</span><br></pre></td></tr></table></figure>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
