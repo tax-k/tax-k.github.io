@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>[헤딩일기] HTTP Performance</title>
+      <link href="/2019/05/30/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-HTTP-Performance/"/>
+      <url>/2019/05/30/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-HTTP-Performance/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p>#<p></p><h2 id="Performance-Tuning"><a href="#Performance-Tuning" class="headerlink" title="Performance Tuning"></a>Performance Tuning</h2><h3 id="TTFB-Time-To-First-Byte"><a href="#TTFB-Time-To-First-Byte" class="headerlink" title="TTFB(Time To First Byte)"></a><b>TTFB</b>(Time To First Byte)</h3><p>client가 웹 페이지 탐색을 시작한 때를 기준으로 페이지 response 의 첫 번째 byte를 수신할 때까지 걸린 시간을 말해요.</p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> http </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[알쓸신잡] HTML/CSS</title>
       <link href="/2019/05/16/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-HTML-CSS/"/>
       <url>/2019/05/16/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-HTML-CSS/</url>
@@ -39,9 +60,27 @@
       <link href="/2019/05/16/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-BEM/"/>
       <url>/2019/05/16/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-BEM/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" < div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script></div>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p>#<p></p><h2 id="What-Is-BEM"><a href="#What-Is-BEM" class="headerlink" title="What Is BEM?"></a>What Is BEM?</h2><h2 id="Why-BEM"><a href="#Why-BEM" class="headerlink" title="Why BEM?"></a>Why BEM?</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
       
       
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Enlighten </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
+            
+            <tag> dev </tag>
+            
+        </tags>
       
     </entry>
     
