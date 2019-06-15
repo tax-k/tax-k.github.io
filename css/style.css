@@ -1503,3 +1503,10 @@ code {
 .highlight .line {
   height: 22px;
 }
+
+img + br + em {
+  font-style: normal;
+  display: inherit;
+  text-align: center;
+  font-size: 90%;
+}
