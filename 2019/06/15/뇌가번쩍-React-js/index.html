@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[뇌가번쩍] React.js">
+<meta property="og:url" content="https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/index.html">
+<meta property="og:site_name" content="헤딩금지">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-15T11:10:16.820Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[뇌가번쩍] React.js">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>[뇌가번쩍] React.js</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/tax-k">Projects</a></li>
+         
+          <li><a href="/cheese/">cheese</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/08/20/뇌가번쩍-Recommender-System/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/06/15/알쓸신잡-Web-Font/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&text=[뇌가번쩍] React.js"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&is_video=false&description=[뇌가번쩍] React.js"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[뇌가번쩍] React.js&body=Check out this article: https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&name=[뇌가번쩍] React.js&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#React-js"><span class="toc-number">1.</span> <span class="toc-text">React.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack"><span class="toc-number">2.</span> <span class="toc-text">Webpack?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#우리같은-뉴비를-위한-페북의-배려"><span class="toc-number">3.</span> <span class="toc-text">우리같은 뉴비를 위한 페북의 배려</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-amp-Usage"><span class="toc-number">3.1.</span> <span class="toc-text">Install &amp; Usage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Command"><span class="toc-number">4.</span> <span class="toc-text">Command</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        [뇌가번쩍] React.js
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">헤딩금지</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-06-15T10:05:40.000Z" itemprop="datePublished">2019-06-15</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Web/">Web</a> › <a class="category-link" href="/categories/Web/Enlighten/">Enlighten</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/dev/">dev</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p>#<p></p>
+<h2 id="React-js"><a href="#React-js" class="headerlink" title="React.js"></a>React.js</h2><blockquote>
+<p>왜 열광 하는가?</p>
+</blockquote>
+<ol>
+<li><p><strong>Javascript 베이스에요.</strong></p>
+<blockquote>
+<p>딴거 배울거 없어요. Javascript 만 부수면 됩니다.</p>
+</blockquote>
+</li>
+<li><p><strong>Composition</strong></p>
+<blockquote>
+<p>Component 단위로 부수면 됩니다. 재사용성 겁나 좋아져요.</p>
+</blockquote>
+<p> <strong>JSX</strong> (리액트로 <code>html</code> 쓰는 법)를 이용해요.</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nav</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;nav&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li&gt;&lt;/li&gt;</span><br><span class="line">            &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>nav&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 요렇게 쓰는 거에요.</p>
+</li>
+<li><p><strong>Uni-Directional Data Flow</strong></p>
+<p> <strong>데이터</strong>는 항상 <strong>한 곳</strong>에 있고, 거기서만 <strong>변경 가능</strong>해요.</p>
+<blockquote>
+<p>데이터가 UI를 변경시키는 것. UI에서 데이터 변경 ❌<br>Model -&gt; View</p>
+</blockquote>
+<p> 반면에 <strong>Angular</strong> 는 Bi-Directional(<strong>View <-> Model</-></strong>)이에요.</p>
+</li>
+<li><p><strong>생태계</strong></p>
+<blockquote>
+<p>글로발 남바완 커뮤니티</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack?"></a>Webpack?</h2><blockquote>
+<p>Trnasfiler</p>
+</blockquote>
+<p><strong>React</strong> 코드를 <strong>브라우저</strong>가 이해할 수 있는 코드로 <strong>변경</strong> 해줘요.</p>
+<p>파일을 바꾸거나 (추가/삭제 등등) <strong>변경</strong>이 일어날 때 자동으로 <strong>변경</strong> 해줍니다.</p>
+<p>즉 최신 <strong>자바스크립트</strong> 버전인 <strong><code>ES6</code></strong> 를 <strong>자동</strong>으로 브라우저가 이해하게 슥 도와줘요.</p>
+<p>&nbsp;&nbsp; <em><code>하 무슨말인지 모르겠다....싶으면?</code></em><br><br></p>
+<h2 id="우리같은-뉴비를-위한-페북의-배려"><a href="#우리같은-뉴비를-위한-페북의-배려" class="headerlink" title="우리같은 뉴비를 위한 페북의 배려"></a>우리같은 뉴비를 위한 페북의 배려</h2><blockquote>
+<p><a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">create-react-app</a></p>
+</blockquote>
+<p>&nbsp;&nbsp;<strong>webpack</strong> 을 안쓰고 <strong>쟤</strong>가 알아서 리액트 앱을 만들어 줘요. (사실 저 안에 webpack 이 들어있는거지만)</p>
+<h3 id="Install-amp-Usage"><a href="#Install-amp-Usage" class="headerlink" title="Install &amp; Usage"></a>Install &amp; Usage</h3><p><strong><code>Install</code></strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g create-react-app</span><br></pre></td></tr></table></figure>
+<p><strong><code>Usage</code></strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">create-react-app tax-app</span><br><span class="line"><span class="built_in">cd</span> tax-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>그러면 <code>localhost</code>로 로컬 서버에 <strong>리액트</strong> 앱이 <strong>따단</strong></p>
+<h2 id="Command"><a href="#Command" class="headerlink" title="Command"></a>Command</h2><p><strong><code>npm run start</code></strong><br>개발용 서버 구동이에요.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<p><strong><code>npm run build</code></strong><br>배포용 서버 구동이에요.<br>static 파일들로 만들어내요.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p><strong><code>npm run test</code></strong><br>테스트용 서버 구동이에요. </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p><strong><code>npm run eject</code></strong><br>현재 프로젝트 설정 및 스크립트를 추출합니다.<br>추출 하면 커스텀 가능해져요.</p>
+<p><strong>한번 실행하면 돌이킬 수 없어요 !!</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run eject</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/tax-k">Projects</a></li>
+         
+          <li><a href="/cheese/">cheese</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#React-js"><span class="toc-number">1.</span> <span class="toc-text">React.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack"><span class="toc-number">2.</span> <span class="toc-text">Webpack?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#우리같은-뉴비를-위한-페북의-배려"><span class="toc-number">3.</span> <span class="toc-text">우리같은 뉴비를 위한 페북의 배려</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-amp-Usage"><span class="toc-number">3.1.</span> <span class="toc-text">Install &amp; Usage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Command"><span class="toc-number">4.</span> <span class="toc-text">Command</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&text=[뇌가번쩍] React.js"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&is_video=false&description=[뇌가번쩍] React.js"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[뇌가번쩍] React.js&body=Check out this article: https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&title=[뇌가번쩍] React.js"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tax-k.github.io/2019/06/15/뇌가번쩍-React-js/&name=[뇌가번쩍] React.js&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 tax_k
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/tax-k">Projects</a></li>
+         
+          <li><a href="/cheese/">cheese</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
