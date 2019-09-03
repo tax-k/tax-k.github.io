@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>[알쓸신잡] CSS Priority Order</title>
+      <link href="/2019/09/03/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-CSS-Priority-Order/"/>
+      <url>/2019/09/03/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-CSS-Priority-Order/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="우선순위"><a href="#우선순위" class="headerlink" title="우선순위"></a>우선순위</h2><h3 id="스타일시트"><a href="#스타일시트" class="headerlink" title="스타일시트"></a>스타일시트</h3><table><thead><tr><th style="text-align:left">우선순위</th><th style="text-align:center">종류</th><th style="text-align:center">부가 설명</th></tr></thead><tbody><tr><td style="text-align:left"><strong>1(min)</strong></td><td style="text-align:center">User Agent</td><td style="text-align:center">브라우저 스타일</td></tr><tr><td style="text-align:left"><strong>2</strong></td><td style="text-align:center">User Style Sheet</td><td style="text-align:center">사용자가 정한 스타일(테마)</td></tr><tr><td style="text-align:left"><strong>3</strong></td><td style="text-align:center">Author Style Sheet</td><td style="text-align:center">우리(제작자)가 넣는 스타일</td></tr><tr><td style="text-align:left"><strong>4</strong></td><td style="text-align:center">Author Style Sheet - <strong>!important</strong></td><td style="text-align:center">우리(제작자)가 넣는 스타일 - <strong>!important</strong></td></tr><tr><td style="text-align:left"><strong>5(max)</strong></td><td style="text-align:center">User Style Sheet - <strong>!important</strong></td><td style="text-align:center">사용자가 정한 스타일 (테마)- <strong>!important</strong></td></tr></tbody></table><blockquote><p>User Style - !important &gt; Author Style - !important &gt; Author Style &gt; User Style &gt; User Agent</p></blockquote><p>위의 순서대로 <strong><code>영향력(명시도)</code>이 강합니다.</strong></p><p>자세히 보시면 여기서 <strong><code>!important</code></strong> 란 놈이 나오는데 이 녀석은 또 뭔가 싶으실 수도 있습니다.</p><p><strong>기본 룰을 깨버리는</strong> 무서운 놈입니다. 아래에서 좀더 자세히 다루겠습니다.</p><p><br></p><h3 id="선택자"><a href="#선택자" class="headerlink" title="선택자"></a>선택자</h3><blockquote><p>Start at 0, add 1000 for style attribute, add 100 for each ID, add 10 for each attribute, class or pseudo-class, add 1 for each element name or pseudo-element.</p></blockquote><ol><li><strong>a</strong> : style 태그를 이용한 스타일을 뜻해요. <code>+1000</code>점</li></ol><p><code>ex)</code></p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- inline style --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"color: #ec185e;"</span>&gt;</span> 퍼실 안내<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- style tag in head --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"> p &#123; color: #ec1852;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure><p><br></p><ol start="2"><li><strong>b</strong> : selector 중에 <strong>id</strong> selector의 <code>개수*100</code> 만큼 score가 증가해요.</li></ol><p><code>ex)</code></p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"facil focus"</span>&gt;</span> 퍼실 안내<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- score 는 200점--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"lab"</span>&gt;</span> 랩짱 안내<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- 얘는 100점--&gt;</span></span><br></pre></td></tr></table></figure><p><br></p><ol start="3"><li><strong>c</strong> : selector 중에 <strong>class</strong> selector, <strong>pseudo class</strong>, <strong>attribute</strong> <code>개수*10</code> 만큼 score가 증가해요.</li></ol><p><code>ex)</code></p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* class(10) + hover(10) + a(1) = 21점 */</span></span><br><span class="line"><span class="selector-class">.facil</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;&#125;</span><br></pre></td></tr></table></figure><p><br></p><ol start="4"><li><strong>d</strong> : selector 중에 <strong>element</strong>와 <strong>pseudo elements</strong> 의 <code>개수*1</code> 만큼 score가 증가해요. 위의 <strong>pseudo class</strong> 와 헷갈리면 안돼요.</li></ol><p><code>ex)</code></p><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* class(10) + link(1) + a(1) = 12점 */</span></span><br><span class="line"><span class="selector-class">.facil</span> <span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;&#125;</span><br></pre></td></tr></table></figure><h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Enlighten </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
+            
+            <tag> dev </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[뇌가번쩍] Recommender System</title>
       <link href="/2019/08/20/%EB%87%8C%EA%B0%80%EB%B2%88%EC%A9%8D-Recommender-System/"/>
       <url>/2019/08/20/%EB%87%8C%EA%B0%80%EB%B2%88%EC%A9%8D-Recommender-System/</url>
