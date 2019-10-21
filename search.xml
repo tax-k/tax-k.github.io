@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>[알쓸신잡] CSS hack</title>
+      <link href="/2019/09/09/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-CSS-hack/"/>
+      <url>/2019/09/09/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-CSS-hack/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" < div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script></div>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[알쓸신잡] CSS Priority Order</title>
       <link href="/2019/09/03/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-CSS-Priority-Order/"/>
       <url>/2019/09/03/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-CSS-Priority-Order/</url>
