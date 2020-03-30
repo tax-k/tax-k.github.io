@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>[헤딩금지] Currying</title>
+      <link href="/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Currying/"/>
+      <url>/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Currying/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="What-is-currying"><a href="#What-is-currying" class="headerlink" title="What is currying?"></a>What is currying?</h2><h3 id="간단히-말하면"><a href="#간단히-말하면" class="headerlink" title="간단히 말하면?"></a>간단히 말하면?</h3><blockquote><p><strong>함수를 반환하는 함수</strong></p></blockquote><h3 id="func-예제"><a href="#func-예제" class="headerlink" title="func 예제"></a>func 예제</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a*b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiplyTwo</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a*<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiplyX</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> multiply(a,x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Arrow-func-예제-1"><a href="#Arrow-func-예제-1" class="headerlink" title="Arrow func 예제 1"></a>Arrow func 예제 1</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a * b;</span><br><span class="line"><span class="keyword">const</span> multiplyTwo = <span class="function">(<span class="params">a</span>) =&gt;</span> multiply(a, <span class="number">2</span>);</span><br><span class="line"><span class="keyword">const</span> multiplyX = <span class="function"><span class="params">x</span> =&gt;</span> a =&gt; multiply(a, x);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 사용 예제 */</span></span><br><span class="line"><span class="keyword">const</span> multiplyThree = multiplyX(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">const</span> multiplyFour = multiplyX(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result1 = multiplyThree(<span class="number">3</span>); <span class="comment">// 3*3 = 9</span></span><br><span class="line"><span class="keyword">const</span> result2 = multiplyFour(<span class="number">3</span>);  <span class="comment">// 4*3 = 12</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* equivalent */</span></span><br><span class="line"><span class="keyword">const</span> result3 = multiplyX(<span class="number">3</span>)(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">const</span> result4 = multiplyX(<span class="number">4</span>)(<span class="number">3</span>);</span><br></pre></td></tr></table></figure><h3 id="Arrow-func-예제-2"><a href="#Arrow-func-예제-2" class="headerlink" title="Arrow func 예제 2"></a>Arrow func 예제 2</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> equation = <span class="function">(<span class="params">a, b, c</span>) =&gt;</span> x =&gt; ((x * a) * b) + c;</span><br><span class="line"><span class="keyword">const</span> formula = equation(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"><span class="keyword">const</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> result = formula(x);</span><br></pre></td></tr></table></figure><p>위에 예시에서 <code>equation()</code> 처럼 인자를 나중에 받아 실행할 함수를 생성해주는 함수를</p><blockquote><p><strong>커링 함수</strong></p></blockquote><p>라고 해요.</p><h3 id="응용-예제"><a href="#응용-예제" class="headerlink" title="응용 예제"></a>응용 예제</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a*b;</span><br><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a+b;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* currying  */</span></span><br><span class="line"><span class="keyword">const</span> multiplyX = <span class="function"><span class="params">x</span> =&gt;</span> a =&gt; multiply(a, <span class="number">2</span>);</span><br><span class="line"><span class="keyword">const</span> addX = <span class="function"><span class="params">x</span> =&gt;</span> a =&gt; add(x, a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> addFour = addX(<span class="number">4</span>);</span><br><span class="line"><span class="keyword">const</span> multiplyTwo = multiplyX(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">const</span> multiplyThree = multiplyX(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">const</span> formula = <span class="function"><span class="params">x</span> =&gt;</span> addFour(multiplyThree(multiplyTwo(x)));</span><br></pre></td></tr></table></figure><blockquote><p><strong>함수의 인자를 다시 구성하여 필요한 함수를 만드는 패턴</strong></p></blockquote><h2 id="함수-조합-기법"><a href="#함수-조합-기법" class="headerlink" title="함수 조합 기법"></a>함수 조합 기법</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Enlighten </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> react </tag>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[헤딩금지] Axios</title>
       <link href="/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Axios/"/>
       <url>/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Axios/</url>
