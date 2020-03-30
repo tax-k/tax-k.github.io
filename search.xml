@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>[헤딩금지] Axios</title>
+      <link href="/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Axios/"/>
+      <url>/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Axios/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p># <p></p><h3 id="dfdfdf"><a href="#dfdfdf" class="headerlink" title="dfdfdf"></a>dfdfdf</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Api.js */</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isDev = process.env.NODE_ENV === <span class="string">'development'</span>;</span><br><span class="line"><span class="keyword">const</span> Api = axios.create(&#123;</span><br><span class="line">    baseURL: isDev ? <span class="string">'http://127.0.0.1:8000/'</span> : <span class="string">'DNS NAME'</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Api;</span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* App.js */</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> Api <span class="keyword">from</span> <span class="string">'./Api'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            isLoading: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _fetchCourseData() &#123;</span><br><span class="line">        Api.get(<span class="string">"url here"</span>)</span><br><span class="line">            .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(res);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(err);</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="keyword">this</span>._fetchCourseData()</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> ()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Enlighten </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> react </tag>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[알쓸신잡] CSS hack</title>
       <link href="/2019/09/09/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-CSS-hack/"/>
       <url>/2019/09/09/%EC%95%8C%EC%93%B8%EC%8B%A0%EC%9E%A1-CSS-hack/</url>
