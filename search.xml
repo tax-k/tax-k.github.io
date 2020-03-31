@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>[헤딩금지] Context</title>
+      <link href="/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Context/"/>
+      <url>/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Context/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="What-is-Context"><a href="#What-is-Context" class="headerlink" title="What is Context?"></a>What is Context?</h2><p>간단하게 말하면</p><blockquote><p>parent, child component가 <strong>연결되어 있지 않아도 데이터 공유 가능</strong>하게 해요.</p></blockquote><p>왜 필요할까요?</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|--NodeContainer</span><br><span class="line">    |--NodeListComponent</span><br><span class="line">        |--NodeComponent</span><br><span class="line">        |--NodeComponent</span><br><span class="line">        |--NodeComponent</span><br><span class="line">        |--NodeComponent</span><br><span class="line">            |--Button</span><br></pre></td></tr></table></figure><p>이런식으로 계층이 잡혀있다고 가정해봅시다. <code>data</code> 를 <code>NodeConainer</code> 부터 <code>Button</code> 까지 전달하려면<br><code>NodeContainer</code> -&gt; <code>NodeListComponent</code> -&gt; <code>NodeComponent</code> -&gt; <code>Button</code> 로<br><strong>순서대로</strong> 전달이 되어야 해요.</p><p>그런데 모든 컴포넌트가 <code>data</code>를 필요로 하진 않을 수 있고, 누락이 있을수도 있습니다.</p><h2 id="Observable-Pattern"><a href="#Observable-Pattern" class="headerlink" title="Observable Pattern"></a>Observable Pattern</h2><blockquote><p>데이터는 <strong><code>provider(공급자)</code></strong> 가 관리하고 <strong><code>consumer(소비자/관찰자)</code></strong>는 <code>provider</code>를 <strong><code>subscribe(구독)</code></strong>하여 데이터를 얻는 방식  </p></blockquote><p>이렇게 되면 </p><blockquote><p>컴포넌트 간 <code>data dependency가 없어졌다</code>고 하며 이 흐름을 만들어 주는 기술이 <strong><code>Context</code></strong> 라고 합니다.</p></blockquote><h2 id="Provider-Consumer"><a href="#Provider-Consumer" class="headerlink" title="Provider/Consumer"></a>Provider/Consumer</h2><ol><li>consumer는 provider보다 낮은 hierarchy에 있어야 한다.</li><li><p>consumer는 provider가 제공하는 call-back 함수로 데이터를 변경 가능.<br> 2-1. provider —- callback func —-&gt; consumer<br> 2-2. consumer —- action(params: <code>data</code>) —-&gt; provider<br> 2-3. provider —- sync —- consumer</p><blockquote><p>이러한 흐름을 <strong><code>DDAU(Data Down Action Up)</code></strong> 이라고 합니다.</p></blockquote><p> 이런 <strong>one-way-flow</strong>는 일관성 유지에 좋아요.</p></li></ol><h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Enlighten </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> react </tag>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[헤딩금지] Currying</title>
       <link href="/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Currying/"/>
       <url>/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Currying/</url>

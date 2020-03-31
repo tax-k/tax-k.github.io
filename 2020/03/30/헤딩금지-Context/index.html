@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="dev,react,js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[헤딩금지] Context">
+<meta property="og:url" content="https://tax-k.github.io/2020/03/30/헤딩금지-Context/index.html">
+<meta property="og:site_name" content="헤딩금지">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-03-30T08:25:12.221Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[헤딩금지] Context">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>[헤딩금지] Context</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/tax-k">Projects</a></li>
+         
+          <li><a href="/cheese/">cheese</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/03/30/헤딩금지-Currying/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tax-k.github.io/2020/03/30/헤딩금지-Context/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&text=[헤딩금지] Context"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&is_video=false&description=[헤딩금지] Context"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[헤딩금지] Context&body=Check out this article: https://tax-k.github.io/2020/03/30/헤딩금지-Context/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&name=[헤딩금지] Context&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Context"><span class="toc-number">1.</span> <span class="toc-text">What is Context?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observable-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Observable Pattern</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Provider-Consumer"><span class="toc-number">3.</span> <span class="toc-text">Provider/Consumer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Provider"><span class="toc-number">4.</span> <span class="toc-text">Provider</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        [헤딩금지] Context
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">헤딩금지</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-03-30T07:17:12.000Z" itemprop="datePublished">2020-03-30</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Web/">Web</a> › <a class="category-link" href="/categories/Web/Enlighten/">Enlighten</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/dev/">dev</a>, <a class="tag-link" href="/tags/js/">js</a>, <a class="tag-link" href="/tags/react/">react</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="What-is-Context"><a href="#What-is-Context" class="headerlink" title="What is Context?"></a>What is Context?</h2><p>간단하게 말하면</p>
+<blockquote>
+<p>parent, child component가 <strong>연결되어 있지 않아도 데이터 공유 가능</strong>하게 해요.</p>
+</blockquote>
+<p>왜 필요할까요?</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|--NodeContainer</span><br><span class="line">    |--NodeListComponent</span><br><span class="line">        |--NodeComponent</span><br><span class="line">        |--NodeComponent</span><br><span class="line">        |--NodeComponent</span><br><span class="line">        |--NodeComponent</span><br><span class="line">            |--Button</span><br></pre></td></tr></table></figure>
+<p>이런식으로 계층이 잡혀있다고 가정해봅시다. <code>data</code> 를 <code>NodeConainer</code> 부터 <code>Button</code> 까지 전달하려면<br><code>NodeContainer</code> -&gt; <code>NodeListComponent</code> -&gt; <code>NodeComponent</code> -&gt; <code>Button</code> 로<br><strong>순서대로</strong> 전달이 되어야 해요.</p>
+<p>그런데 모든 컴포넌트가 <code>data</code>를 필요로 하진 않을 수 있고, 누락이 있을수도 있습니다.</p>
+<h2 id="Observable-Pattern"><a href="#Observable-Pattern" class="headerlink" title="Observable Pattern"></a>Observable Pattern</h2><blockquote>
+<p>데이터는 <strong><code>provider(공급자)</code></strong> 가 관리하고 <strong><code>consumer(소비자/관찰자)</code></strong>는 <code>provider</code>를 <strong><code>subscribe(구독)</code></strong>하여 데이터를 얻는 방식  </p>
+</blockquote>
+<p>이렇게 되면 </p>
+<blockquote>
+<p>컴포넌트 간 <code>data dependency가 없어졌다</code>고 하며 이 흐름을 만들어 주는 기술이 <strong><code>Context</code></strong> 라고 합니다.</p>
+</blockquote>
+<h2 id="Provider-Consumer"><a href="#Provider-Consumer" class="headerlink" title="Provider/Consumer"></a>Provider/Consumer</h2><ol>
+<li>consumer는 provider보다 낮은 hierarchy에 있어야 한다.</li>
+<li><p>consumer는 provider가 제공하는 call-back 함수로 데이터를 변경 가능.<br> 2-1. provider —- callback func —-&gt; consumer<br> 2-2. consumer —- action(params: <code>data</code>) —-&gt; provider<br> 2-3. provider —- sync —- consumer</p>
+<blockquote>
+<p>이러한 흐름을 <strong><code>DDAU(Data Down Action Up)</code></strong> 이라고 합니다.</p>
+</blockquote>
+<p> 이런 <strong>one-way-flow</strong>는 일관성 유지에 좋아요.</p>
+</li>
+</ol>
+<h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/tax-k">Projects</a></li>
+         
+          <li><a href="/cheese/">cheese</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Context"><span class="toc-number">1.</span> <span class="toc-text">What is Context?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Observable-Pattern"><span class="toc-number">2.</span> <span class="toc-text">Observable Pattern</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Provider-Consumer"><span class="toc-number">3.</span> <span class="toc-text">Provider/Consumer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Provider"><span class="toc-number">4.</span> <span class="toc-text">Provider</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tax-k.github.io/2020/03/30/헤딩금지-Context/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&text=[헤딩금지] Context"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&is_video=false&description=[헤딩금지] Context"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[헤딩금지] Context&body=Check out this article: https://tax-k.github.io/2020/03/30/헤딩금지-Context/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&title=[헤딩금지] Context"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tax-k.github.io/2020/03/30/헤딩금지-Context/&name=[헤딩금지] Context&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 tax_k
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/tax-k">Projects</a></li>
+         
+          <li><a href="/cheese/">cheese</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
