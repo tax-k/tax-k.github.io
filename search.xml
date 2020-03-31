@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>[헤딩금지] Redux</title>
+      <link href="/2020/03/31/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Redux/"/>
+      <url>/2020/03/31/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Redux/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1 id><a href="#" class="headerlink" title=" "></a> <h2 id="What-is-Redux"><a href="#What-is-Redux" class="headerlink" title="What is Redux?"></a>What is Redux?</h2><blockquote><p>Store 에서 모든 데이터 관리합니다.</p></blockquote><p>컴포넌트는 <code>dispatch()</code> 함수로 <code>reducer</code>에 액션을 전달합니다.</p><p>액션에는 <code>reducer</code>에서 처리해야 할 작업 이름, 데이터가 <code>object</code> 형태로 들어있습니다.</p><p><code>reducer</code>는 액션을 받아 스토어 변경작업을 진행, 완료되면 <code>connect()</code> 함수로 연결된 컴포넌트에 변경된 스토어 데이터를 전파, <code>sync</code>합니다.</p><table><thead><tr><th>x</th><th>y</th></tr></thead><tbody><tr><td>컴포넌트</td><td>손님</td></tr><tr><td><code>dispatch()</code>, <code>connect()</code></td><td>종업원</td></tr><tr><td>액션</td><td>주문서</td></tr><tr><td><code>reducer</code></td><td>요리사</td></tr></tbody></table><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn add redux react-redux</span><br></pre></td></tr></table></figure><p><code>react-redux</code> 를 설치하는 이유 : react 와 redux 연동을 위해서 필요함. </p><p>크롬 익스텐션: <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US" target="_blank" rel="noopener"><strong>Rdedux DevTools</strong></a> 설치</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn add redux-devtools-extension --dev</span><br></pre></td></tr></table></figure><h2 id="Redux로-빈-store-생성하기"><a href="#Redux로-빈-store-생성하기" class="headerlink" title="Redux로 빈 store 생성하기"></a>Redux로 빈 store 생성하기</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">createStore(reducer, /* initial state */ , /* enhancer */)</span><br></pre></td></tr></table></figure><p>reducer, state(스토어 데이터의 초깃값), 미들웨어 함수를 인자로</p><h2 id="Reducer-Action"><a href="#Reducer-Action" class="headerlink" title="Reducer  Action"></a>Reducer <-> Action</-></h2><blockquote><p>{type: … , payload: …} 구조로 된 object</p></blockquote><p><code>type</code>: 어떤 작업인지 쉽게 이해할 수 있는 <strong>고유한 값(중복 x) 문자열</strong></p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Enlighten </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> react </tag>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[헤딩금지] Context</title>
       <link href="/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Context/"/>
       <url>/2020/03/30/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Context/</url>
