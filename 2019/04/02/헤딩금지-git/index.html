@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://tax-k.github.io/2019/04/02/헤딩금지-git/index.html">
 <meta property="og:site_name" content="헤딩금지">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-02T03:58:29.910Z">
+<meta property="og:updated_time" content="2020-04-02T04:00:07.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[헤딩금지] git">
     
@@ -155,7 +155,8 @@
 <p>or</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase master_dev master_tax</span><br></pre></td></tr></table></figure>
 <p><code>rebase</code> 하는 방법 둘다 알아두기</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
+<p>참고: <a href="https://stackoverflow.com/questions/4010962/how-do-i-synchronize-two-branches-in-the-same-git-repository" target="_blank" rel="noopener">stackoverflow</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin <span class="variable">$1</span></span><br><span class="line">git checkout <span class="variable">$2</span></span><br><span class="line">git rebase <span class="variable">$1</span></span><br><span class="line">git push origin <span class="variable">$2</span></span><br><span class="line">git checkout <span class="variable">$1</span></span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };

@@ -4,6 +4,68 @@
   
     
     <entry>
+      <title>[헤딩금지] Storybook</title>
+      <link href="/2020/04/02/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Storybook/"/>
+      <url>/2020/04/02/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Storybook/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h2 id="What-is-storybook"><a href="#What-is-storybook" class="headerlink" title="What is storybook"></a>What is storybook<h2 id="addon"><a href="#addon" class="headerlink" title="addon"></a>addon</h2><p>fdfdf</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn add --dev @storybook/addons @storybook/addon-actions</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn add --dev storybook-addon-jsx</span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* ./storybook/addons.js */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'@storybook/addon-actions/register'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'storybook-addon-jsx/register'</span>;</span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* ./storybook/config.js */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; configure, setAddon &#125; <span class="keyword">from</span> <span class="string">'@storybook/react'</span>;</span><br><span class="line"><span class="keyword">import</span> interopRequireDefault <span class="keyword">from</span> <span class="string">'babel-runtime/helpers/interopRequireDefault'</span>;</span><br><span class="line"><span class="keyword">import</span> JSXAddon <span class="keyword">from</span> <span class="string">'storybook-addon-jsx'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStories</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> context = <span class="built_in">require</span>.context(<span class="string">'../src/stories'</span>, <span class="literal">true</span>, /Story\.jsx$/);</span><br><span class="line"></span><br><span class="line">    context.keys().forEach(<span class="function"><span class="params">srcFile</span> =&gt;</span> &#123;</span><br><span class="line">        interopRequireDefault(context(srcFile));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setAddon(JSXAddon);</span><br><span class="line">configure(loadStories, <span class="built_in">module</span>);</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Enlighten </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dev </tag>
+            
+            <tag> react </tag>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[헤딩금지] Style Component</title>
+      <link href="/2020/04/02/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Style-Component/"/>
+      <url>/2020/04/02/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-Style-Component/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h2 id="문제점"><a href="#문제점" class="headerlink" title="문제점"></a>문제점<ol><li>컴포넌트 공유시 <code>css</code>파일도 같이 움직여야 한다.</li><li>프로젝트 규모가 커질수록 관리가 더 힘들어진다.</li></ol><h2 id="css-in-js"><a href="#css-in-js" class="headerlink" title="css-in-js"></a>css-in-js</h2><p><code>react-with-styles</code> 라이브러리를 사용한다.</p><h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ol><li><strong><code>HoC(Hihger order component)</code></strong> 를 사용해서 읽기 쉽다.</li><li><strong>서버 출력</strong>과 <strong>클래스 압축</strong>을 지원한다.</li></ol><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn add react-with-styles aphrodite react-with-styles-interface-aphrodite</span><br></pre></td></tr></table></figure><p><code>aphrodite</code> 는 서버 출력을 도와주는 라이브러리.</p><p>js로 css를 적용하면 화면이 모두 출력된 후 js엔진이 동작/적용되고 시간차가 생겨요. 그럼 화면이 깜빡여요.</p><blockquote><p>화면 출력 순간에 스타일 코드를 서버에서 생성, 같이 출력하는 방법.</p></blockquote><h3 id="theme-파일-생성"><a href="#theme-파일-생성" class="headerlink" title="theme 파일 생성"></a>theme 파일 생성</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="comment">/* Theme.js */</span></span><br><span class="line">    <span class="comment">//color</span></span><br><span class="line">    color: &#123;</span><br><span class="line">        black: <span class="string">'#1b1c1d'</span>,</span><br><span class="line">        gray: <span class="string">'#767676'</span>,</span><br><span class="line">        brown: <span class="string">'#a5673f'</span>,</span><br><span class="line">        pink: <span class="string">'#e03997'</span>,</span><br><span class="line">        purple: <span class="string">'#a333c8'</span>,</span><br><span class="line">        violet: <span class="string">'#6435c9'</span>,</span><br><span class="line">        blue: <span class="string">'#2185d0'</span>,</span><br><span class="line">        teal: <span class="string">'#00b5ad'</span>,</span><br><span class="line">        green: <span class="string">'#21ba45'</span>,</span><br><span class="line">        olive: <span class="string">'#b5cc18'</span>,</span><br><span class="line">        yellow: <span class="string">'#fbbd08'</span>,</span><br><span class="line">        orange: <span class="string">'#f2711c'</span>,</span><br><span class="line">        red: <span class="string">'#db2828'</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//font-size</span></span><br><span class="line">    size: &#123;</span><br><span class="line">        xg: <span class="number">24</span>,</span><br><span class="line">        lg: <span class="number">18</span>,</span><br><span class="line">        md: <span class="number">14</span>,</span><br><span class="line">        sm: <span class="number">12</span>,</span><br><span class="line">        xs: <span class="number">10</span>,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//line-height</span></span><br><span class="line">    lineHeight: &#123;</span><br><span class="line">        xg: <span class="string">'60px'</span>,</span><br><span class="line">        lg: <span class="string">'54px'</span>,</span><br><span class="line">        md: <span class="string">'36px'</span>,</span><br><span class="line">        sm: <span class="string">'24px'</span>,</span><br><span class="line">        xs: <span class="string">'18px'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//length</span></span><br><span class="line">    unit: <span class="number">4</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="common-style-component-함수-생성"><a href="#common-style-component-함수-생성" class="headerlink" title="common style component 함수 생성"></a>common style component 함수 생성</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* withStyle.js */</span></span><br><span class="line"><span class="keyword">import</span> ThemedStyleSheet <span class="keyword">from</span> <span class="string">'react-with-styles/lib/ThemedStyleSheet'</span>;</span><br><span class="line"><span class="keyword">import</span> aphroditeInterface <span class="keyword">from</span> <span class="string">'react-with-styles-interface-aphrodite'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; css, withStyles, withStylesPropTypes &#125; <span class="keyword">from</span> <span class="string">'react-with-styles'</span>;</span><br><span class="line"><span class="keyword">import</span> Theme <span class="keyword">from</span> <span class="string">'./SeoulTheme'</span>;</span><br><span class="line"></span><br><span class="line">ThemedStyleSheet.registerTheme(Theme);</span><br><span class="line">ThemedStyleSheet.registerInterface(aphroditeInterface);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; css, withStyles, withStylesPropTypes, ThemedStyleSheet &#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> withStyles;</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+          <category> Enlighten </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> css </tag>
+            
+            <tag> dev </tag>
+            
+            <tag> react </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[헤딩일기] cb() never called</title>
       <link href="/2020/04/02/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-cb-never-called/"/>
       <url>/2020/04/02/%ED%97%A4%EB%94%A9%EC%9D%BC%EA%B8%B0-cb-never-called/</url>
@@ -502,7 +564,7 @@
       <link href="/2019/04/02/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-git/"/>
       <url>/2019/04/02/%ED%97%A4%EB%94%A9%EA%B8%88%EC%A7%80-git/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h2 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch<h2 id="git-sync-맞추기"><a href="#git-sync-맞추기" class="headerlink" title="git sync 맞추기"></a>git sync 맞추기</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d master_tax</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b master_tax</span><br></pre></td></tr></table></figure><p>기존 <code>branch</code> 삭제하고 다시 <code>branch</code> 따는 방법을 써도 되고</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout master_tax</span><br><span class="line">git rebase master_dev</span><br></pre></td></tr></table></figure><p>or</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase master_dev master_tax</span><br></pre></td></tr></table></figure><p><code>rebase</code> 하는 방법 둘다 알아두기</p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h2 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch<h2 id="git-sync-맞추기"><a href="#git-sync-맞추기" class="headerlink" title="git sync 맞추기"></a>git sync 맞추기</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d master_tax</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout -b master_tax</span><br></pre></td></tr></table></figure><p>기존 <code>branch</code> 삭제하고 다시 <code>branch</code> 따는 방법을 써도 되고</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout master_tax</span><br><span class="line">git rebase master_dev</span><br></pre></td></tr></table></figure><p>or</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git rebase master_dev master_tax</span><br></pre></td></tr></table></figure><p><code>rebase</code> 하는 방법 둘다 알아두기</p><p>참고: <a href="https://stackoverflow.com/questions/4010962/how-do-i-synchronize-two-branches-in-the-same-git-repository" target="_blank" rel="noopener">stackoverflow</a></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin <span class="variable">$1</span></span><br><span class="line">git checkout <span class="variable">$2</span></span><br><span class="line">git rebase <span class="variable">$1</span></span><br><span class="line">git push origin <span class="variable">$2</span></span><br><span class="line">git checkout <span class="variable">$1</span></span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
       
       
       
