@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://tax-k.github.io/2020/03/31/헤딩금지-Redux/index.html">
 <meta property="og:site_name" content="헤딩금지">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-31T07:00:36.039Z">
+<meta property="og:updated_time" content="2020-04-01T07:00:47.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[헤딩금지] Redux">
     
@@ -74,6 +74,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2020/04/02/헤딩일기-cb-never-called/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2020/03/30/헤딩금지-Context/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -102,7 +104,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Redux"><span class="toc-number">1.</span> <span class="toc-text">What is Redux?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redux로-빈-store-생성하기"><span class="toc-number">2.</span> <span class="toc-text">Redux로 빈 store 생성하기</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reducer-Action"><span class="toc-number">3.</span> <span class="toc-text">Reducer  Action</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Redux"><span class="toc-number">1.</span> <span class="toc-text">What is Redux?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redux로-빈-store-생성하기"><span class="toc-number">2.</span> <span class="toc-text">Redux로 빈 store 생성하기</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reducer-Action"><span class="toc-number">3.</span> <span class="toc-text">Reducer  Action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reducer"><span class="toc-number">4.</span> <span class="toc-text">Reducer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dispatch"><span class="toc-number">5.</span> <span class="toc-text">Dispatch()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reducer-분리"><span class="toc-number">6.</span> <span class="toc-text">Reducer 분리</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#loading-reducer"><span class="toc-number">6.1.</span> <span class="toc-text">loading reducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user-reducer"><span class="toc-number">6.2.</span> <span class="toc-text">user reducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reducer-binding"><span class="toc-number">6.3.</span> <span class="toc-text">reducer binding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store-설정-파일"><span class="toc-number">6.4.</span> <span class="toc-text">store 설정 파일</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -193,7 +195,27 @@
 <p>{type: … , payload: …} 구조로 된 object</p>
 </blockquote>
 <p><code>type</code>: 어떤 작업인지 쉽게 이해할 수 있는 <strong>고유한 값(중복 x) 문자열</strong></p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
+<p><code>payload</code>: 스토어에 사용될 값. 요건 다른 이름 해도 상관 없음, 생략도 가능</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">'SET_LOADING'</span>,</span><br><span class="line">    payload: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    type: <span class="string">'SET_USER'</span>,</span><br><span class="line">    payload: &#123;</span><br><span class="line">        name:<span class="string">'Park'</span>,</span><br><span class="line">        age: <span class="number">28</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>payload</code>를 <strong>생략하는 경우</strong> : store의 데이터 초기화 할 때</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">'RESET_LOADING'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>자세히 풀면</p>
+<p>스토어의 이전 데이터(<code>state</code>), 액션(<code>action</code>)을 받아 새로운 스토어의 데이터를 반환해요</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state, action</span>) =&gt;</span> state + action.payload;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>리턴 되는 데이터의 자료형은 이전 데이터와 같아야 한다.</p>
+</blockquote>
+<p>대부분 object 형이라 딱히 신경쓰진 않아도 된다.</p>
+<h2 id="Dispatch"><a href="#Dispatch" class="headerlink" title="Dispatch()"></a>Dispatch()</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">componentDidMount()&#123;</span><br><span class="line">    <span class="keyword">this</span>.store.dispatch(&#123;</span><br><span class="line">        type: <span class="string">'SET_LOADING'</span>,</span><br><span class="line">        payload: <span class="literal">true</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;<span class="attr">type</span>: <span class="string">'SET_LOADING'</span>, <span class="attr">payload</span>: <span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>라는 액션이 <code>dispatch()</code>함수를 통해 <code>reducer</code>(state =&gt; state) 에 전달되요.</p>
+<h2 id="Reducer-분리"><a href="#Reducer-분리" class="headerlink" title="Reducer 분리"></a>Reducer 분리</h2><p>지금까지 1개의 리듀서가 스토어 전체를 관리했는데 이건 비효율적이다.</p>
+<blockquote>
+<p>데이터의 종류에 맞게 분리하자.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|--- actions</span><br><span class="line">    |--- loadingActions.js</span><br><span class="line">    |--- userActions.js</span><br><span class="line">|</span><br><span class="line">|--- reducers</span><br><span class="line">    |--- loadingReducers.js</span><br><span class="line">    |--- userReducers.js</span><br><span class="line">    |--- index.js</span><br><span class="line">|</span><br><span class="line">|--- AdvReducApp.jsx</span><br></pre></td></tr></table></figure>
+<h3 id="loading-reducer"><a href="#loading-reducer" class="headerlink" title="loading reducer"></a>loading reducer</h3><h3 id="user-reducer"><a href="#user-reducer" class="headerlink" title="user reducer"></a>user reducer</h3><h3 id="reducer-binding"><a href="#reducer-binding" class="headerlink" title="reducer binding"></a>reducer binding</h3><h3 id="store-설정-파일"><a href="#store-설정-파일" class="headerlink" title="store 설정 파일"></a>store 설정 파일</h3></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script src="https://github.com/sachinchoolur/lg-thumbnail.js"></script><script src="https://github.com/sachinchoolur/lg-fullscreen.js"></script><script src="https://github.com/sachinchoolur/lg-zoom.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
@@ -227,7 +249,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Redux"><span class="toc-number">1.</span> <span class="toc-text">What is Redux?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redux로-빈-store-생성하기"><span class="toc-number">2.</span> <span class="toc-text">Redux로 빈 store 생성하기</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reducer-Action"><span class="toc-number">3.</span> <span class="toc-text">Reducer  Action</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Redux"><span class="toc-number">1.</span> <span class="toc-text">What is Redux?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redux로-빈-store-생성하기"><span class="toc-number">2.</span> <span class="toc-text">Redux로 빈 store 생성하기</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reducer-Action"><span class="toc-number">3.</span> <span class="toc-text">Reducer  Action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reducer"><span class="toc-number">4.</span> <span class="toc-text">Reducer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dispatch"><span class="toc-number">5.</span> <span class="toc-text">Dispatch()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reducer-분리"><span class="toc-number">6.</span> <span class="toc-text">Reducer 분리</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#loading-reducer"><span class="toc-number">6.1.</span> <span class="toc-text">loading reducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user-reducer"><span class="toc-number">6.2.</span> <span class="toc-text">user reducer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reducer-binding"><span class="toc-number">6.3.</span> <span class="toc-text">reducer binding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store-설정-파일"><span class="toc-number">6.4.</span> <span class="toc-text">store 설정 파일</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
